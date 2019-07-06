@@ -11,6 +11,7 @@
 body {
   color: var(--gray, #3d3d3d);
   font-size: 14px;
+  font-family: Arial;
 }
 
 p {
