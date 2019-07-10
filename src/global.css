@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Overpass:400,800,900&display=swap');
+
 :root {
   --navy: #091b57;
   --lime: #a5fc03;
@@ -11,11 +13,11 @@
 body {
   color: var(--gray, #3d3d3d);
   font-size: 14px;
-  font-family: Arial;
+  font-family: Arial, Helvetica;
 }
 
 p {
-  line-height: 1.9;
+  line-height: 1.7;
   margin-top: 0;
   margin-bottom: 14px;
 }
@@ -27,4 +29,22 @@ a {
 
 a:hover {
   color: var(--lime, #a5fc03);
+}
+
+header,
+main,
+footer {
+  max-width: 1200px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header {
+  margin-top: 84px;
+}
+
+footer {
+  margin-bottom: 56px;
 }
