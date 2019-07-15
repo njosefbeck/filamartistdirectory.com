@@ -1,0 +1,44 @@
+.artist {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 50%;
+}
+
+@media (min-width: 600px) {
+  .artist {
+    width: 33.33%;
+  }
+}
+
+@media (min-width: 800px) {
+  .artist {
+    width: 25%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .artist {
+    width: 20%;
+  }
+}
+
+.artist a,
+.artist a:hover,
+.artist a:visited {
+  color: var(--gray, #3d3d3d);
+}
+
+.artist:last-child {
+  margin-bottom: 0;
+}
+
+.artist .image {
+  margin-bottom: 5px;
+  max-width: 100%;
+}
+
+.artist .name {
+  text-transform: uppercase;
+}

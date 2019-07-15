@@ -2,4 +2,11 @@
   font-weight: 400;
   font-size: 12px;
   color: var(--lightgray, #ddd);
+  text-align: center;
+}
+
+@media (min-width: 1000px) {
+  .artist-count {
+    text-align: left;
+  }
 }
