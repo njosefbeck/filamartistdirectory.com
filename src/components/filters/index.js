@@ -1,7 +1,8 @@
 import './Filters.css'
-import React from 'react'
+import React, { useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import extractNodes from '../../helpers/extractNodes'
+import Categories from './categories';
 
 const Filters = () => {
   const data = useStaticQuery(graphql`
@@ -32,6 +33,8 @@ const Filters = () => {
     }
   `)
 
+  const [ activeCategory, setActiveCategory ] = useState(null)
+
   const locations = extractNodes(data.allContentfulLocation)
   const media = extractNodes(data.allContentfulMedium)
 
@@ -39,15 +42,7 @@ const Filters = () => {
 
   return (
     <div className='filters'>
-      <ul className='categories'>
-        <li className='category active'>
-          Region
-        </li>
-        <li className='spacer'>/</li>
-        <li className='category'>
-          State
-        </li>
-      </ul>
+      <Categories activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
       <ul className='options'>
         <li className='option'>
           West
