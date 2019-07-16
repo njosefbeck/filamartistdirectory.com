@@ -6,7 +6,7 @@
   "author": "Nathan Beck <njosefbeck@gmail.com>",
   "dependencies": {
     "dotenv": "8.0.0",
-    "gatsby": "2.13.11",
+    "gatsby": "2.13.23",
     "gatsby-image": "2.2.4",
     "gatsby-plugin-offline": "2.2.1",
     "gatsby-plugin-react-helmet": "3.1.0",

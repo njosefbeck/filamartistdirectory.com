@@ -3,14 +3,14 @@ import Page from '../components/page';
 import { graphql } from 'gatsby'
 import extractNodes from '../helpers/extractNodes'
 import Artists from '../components/artists';
+import Filters from '../components/filters';
 
 const ArtistsPage = ({ data }) => {
   const artists = extractNodes(data.allContentfulArtist)
-  const locations = extractNodes(data.allContentfulLocation)
-  const media = extractNodes(data.allContentfulMedium)
 
   return (
     <Page>
+      <Filters />
       <Artists artists={artists} />
     </Page>
   )
@@ -34,29 +34,6 @@ export const query = graphql`
           }
           media {
             name
-            id
-          }
-        }
-      }
-    }
-    allContentfulLocation {
-      edges {
-        node {
-          id
-          region
-          state
-          artist {
-            id
-          }
-        }
-      }
-    }
-    allContentfulMedium {
-      edges {
-        node {
-          id
-          name
-          artist {
             id
           }
         }

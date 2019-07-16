@@ -2,7 +2,7 @@ import './Artist.css'
 import React from 'react'
 import { Link } from 'gatsby'
 
-const Artist = ({ name, slug, gallery }) => {
+const Artist = ({ name, slug, imageThumbnail, gallery }) => {
   return (
     <li className='artist'>
       <Link to={`/artists/${slug}`}>
