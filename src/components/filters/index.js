@@ -2,6 +2,7 @@ import './Filters.css'
 import React, { useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import extractNodes from '../../helpers/extractNodes'
+import groupArtistsByRegion from '../../helpers/groupArtistsByRegion'
 import Categories from './categories';
 
 const Filters = () => {
@@ -36,9 +37,17 @@ const Filters = () => {
   const [ activeCategory, setActiveCategory ] = useState(null)
 
   const locations = extractNodes(data.allContentfulLocation)
-  const media = extractNodes(data.allContentfulMedium)
 
   console.log(locations)
+
+  const regions = locations
+    .map(l => ({ name: l.region, artists: l.artist }))
+    .sort((a, b) => a.name - b.name)
+    .reduce(groupArtistsByRegion, [])
+    
+  const media = extractNodes(data.allContentfulMedium)
+
+  console.log(regions)
 
   return (
     <div className='filters'>
@@ -47,11 +56,9 @@ const Filters = () => {
         <li className='option'>
           West
         </li>
-        <li className='spacer'>/</li>
         <li className='option active'>
           East
         </li>
-        <li className='spacer'>/</li>
         <li className='option'>
           Midwest
         </li>
