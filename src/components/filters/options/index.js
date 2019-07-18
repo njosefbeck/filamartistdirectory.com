@@ -1,5 +1,5 @@
 import './Options.css'
-import React, {useState } from 'react'
+import React from 'react'
 
 const Option = ({ isActive, artistIds, category, name, toggleOption }) => {
   if (!artistIds) {
