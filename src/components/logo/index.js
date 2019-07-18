@@ -4,7 +4,7 @@ import React from 'react'
 
 const Logo = () => (
   <h1 className='logo'>
-    <Link to='/'>
+    <Link to='/artists'>
       Filipino American Artist Directory
     </Link>
   </h1>
