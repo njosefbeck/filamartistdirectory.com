@@ -1,0 +1,38 @@
+.options {
+  display: inline-block;
+  list-style-type: none;
+  padding-left: 0;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding: 5px 10px;
+  border: 2px solid var(--gray, #3d3d3d);
+}
+
+.options .option {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.options .option:hover {
+  cursor: pointer;
+}
+
+.options .option:after {
+  content: '/';
+  margin-left: 5px;
+  color: var(--lightgray, #ddd);
+}
+
+.options .option:last-child:after {
+  content: '';
+}
+
+.options .option.active {
+  font-weight: 900;
+}
+
+.options .option.disabled {
+  cursor: auto;
+  color: var(--lightgray, #ddd);
+}
