@@ -11,20 +11,20 @@ const groupArtistsByRegion = (regions, region) => {
     return [ ...regions, region]
   }
 
-  if (!region.artists) {
+  if (!region.artistIds) {
     return regions
   }
 
-  let artists = []
-  if (!lastRegion.artists) {
-    artists = [ ...region.artists ] 
+  let artistIds = []
+  if (!lastRegion.artistIds) {
+    artistIds = [ ...region.artistIds ] 
   } else {
-    artists = [ ...lastRegion.artists, ...region.artists ]
+    artistIds = [ ...lastRegion.artistIds, ...region.artistIds ]
   }
 
   // Add region artists to last region
   const updatedRegions = JSON.parse(JSON.stringify(regions))
-  updatedRegions[updatedRegions.length - 1].artists = artists
+  updatedRegions[updatedRegions.length - 1].artistIds = artistIds
 
   return updatedRegions
 }

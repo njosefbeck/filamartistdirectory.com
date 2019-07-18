@@ -34,12 +34,8 @@ const ArtistsPage = ({ data }) => {
     State: [],
     Media: [],
   })
-
   const flattenedArtistIds = flattenArtistIds(artistIds)
   const filteredArtists = artists.filter(a => flattenedArtistIds.includes(a.id))
-
-  console.log(artists)
-  console.log(filteredArtists)
 
   const filterArtists = (categoryName, ids) => {
     setArtistIds({

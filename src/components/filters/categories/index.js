@@ -1,18 +1,18 @@
 import './Categories.css'
 import React from 'react'
 
-const Category = ({ isActive, name, setActiveCategory }) => {
+const Category = ({ isActive, name, onCategoryClick }) => {
   return (
     <li
       className={isActive ? 'category active' : 'category'}
-      onClick={() => setActiveCategory(name)}
+      onClick={() => onCategoryClick(name)}
     >
       {name}
     </li>
   )
 }
 
-const Categories = ({ activeCategory, setActiveCategory }) => {
+const Categories = ({ activeCategory, onCategoryClick }) => {
   const names = ['Region', 'State', 'Media']
 
   return (
@@ -22,7 +22,7 @@ const Categories = ({ activeCategory, setActiveCategory }) => {
           isActive={activeCategory === name}
           key={name}
           name={name}
-          setActiveCategory={setActiveCategory}
+          onCategoryClick={onCategoryClick}
         />
       ))}
     </ul>

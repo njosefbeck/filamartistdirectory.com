@@ -1,11 +1,12 @@
 import './Filters.css'
 import React, { useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import alphaSortByName from '../../helpers/alphaSortByName'
 import extractNodes from '../../helpers/extractNodes'
-import groupArtistsByRegion from '../../helpers/groupArtistsByRegion'
 import Categories from './categories';
 import Options from './options'
+import getRegions from '../../helpers/getRegions'
+import getStates from '../../helpers/getStates'
+import getMedia from '../../helpers/getMedia'
 
 const filtersQuery = graphql`
   query FiltersQuery {
@@ -34,21 +35,6 @@ const filtersQuery = graphql`
     }
   }
 `
-
-const getIds = artists => artists ? artists.map(a => a.id) : null
-
-const getRegions = locations => locations
-  .map(l => ({ name: l.region, artistIds: getIds(l.artist) }))
-  .sort(alphaSortByName)
-  .reduce(groupArtistsByRegion, [])
-
-const getStates = locations => locations
-  .map(l => ({ name: l.state, artistIds: getIds(l.artist) }))
-  .sort(alphaSortByName)
-
-const getMedia = contentfulMedia => contentfulMedia
-  .map(m => ({ name: m.name, artistIds: getIds(m.artist) }))
-  .sort(alphaSortByName)
 
 const getOptions = (category, regions, states, media) => {
   switch (category) {
@@ -84,6 +70,7 @@ const Filters = ({ filterArtists }) => {
     State: [],
     Media: [],
   })
+  const [ isOptionsOpen, setIsOptionsOpen ] = useState(false)
   const locations = extractNodes(data.allContentfulLocation)
   const states = getStates(locations)
   const regions = getRegions(locations)
@@ -102,10 +89,23 @@ const Filters = ({ filterArtists }) => {
     filterArtists(categoryName, artistIds)
   }
 
+  const handleCategoryClick = categoryName => {
+    let openOptions = false
+
+    if (activeCategory !== categoryName) {
+      openOptions = true
+    } else {
+      openOptions = !isOptionsOpen
+    }
+
+    setActiveCategory(categoryName)
+    setIsOptionsOpen(openOptions)
+  }
+
   return (
     <div className='filters'>
-      <Categories activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
-      {options.length > 0 && (
+      <Categories activeCategory={activeCategory} onCategoryClick={handleCategoryClick} />
+      {isOptionsOpen && options.length > 0 && (
         <Options
           category={activeCategory}
           toggleOption={handleOptionToggle}
