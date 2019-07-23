@@ -49,44 +49,21 @@ const getOptions = (category, regions, states, media) => {
   }
 }
 
-const toggleOption = (activeCategoryOptions, optionName) => {
-  if (activeCategoryOptions.includes(optionName)) {
-    return activeCategoryOptions.filter(name => name !== optionName )
-  } 
-  
-  return [ ...activeCategoryOptions, optionName ]
-}
-
-const setIsActive = (category, options, name) => {
-  if (!category) return false
-  return options[category].includes(name)
-}
-
 const Filters = ({ filterArtists }) => {
   const data = useStaticQuery(filtersQuery)
   const [ activeCategory, setActiveCategory ] = useState(null)
-  const [ activeOptions, setActiveOptions ] = useState({
-    Region: [],
-    State: [],
-    Media: [],
-  })
+  const [ activeOption, setActiveOption ] = useState({})
   const [ isOptionsOpen, setIsOptionsOpen ] = useState(false)
   const locations = extractNodes(data.allContentfulLocation)
   const states = getStates(locations)
   const regions = getRegions(locations)
   const media = getMedia(extractNodes(data.allContentfulMedium))
   const allOptions = getOptions(activeCategory, regions, states, media)
-  const options = allOptions.map(o => ({
-    ...o,
-    isActive: setIsActive(activeCategory, activeOptions, o.name), 
-  }))
+  const options = allOptions.map(o => ({ ...o, isActive: o.name === activeOption.name }))
 
   const handleOptionToggle = (categoryName, optionName, artistIds) => {
-    setActiveOptions({
-      ...activeOptions,
-      [categoryName]: toggleOption(activeOptions[categoryName], optionName),
-    })
-    filterArtists(categoryName, artistIds)
+    setActiveOption({ category: categoryName, name: optionName })
+    filterArtists(artistIds)
   }
 
   const handleCategoryClick = categoryName => {

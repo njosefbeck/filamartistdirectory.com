@@ -5,48 +5,14 @@ import extractNodes from '../helpers/extractNodes'
 import Artists from '../components/artists';
 import Filters from '../components/filters';
 
-const updateArtistIds = (artistIds, ids) => {
-  let updated = [ ...artistIds ]
-
-  for (const id of ids) {
-    if (updated.includes(id)) {
-      updated = updated.filter(aId => aId !== id)
-    } else {
-      updated = [ ...updated, id ]
-    }
-  }
-
-  return updated
-}
-
-const flattenArtistIds = ids => {
-  const flattened = []
-  for (const category in ids) {
-    flattened.push(...ids[category])
-  }
-  return [ ...new Set(flattened) ]
-}
-
 const ArtistsPage = ({ data }) => {
   const artists = extractNodes(data.allContentfulArtist)
-  const [ artistIds, setArtistIds ] = useState({
-    Region: [],
-    State: [],
-    Media: [],
-  })
-  const flattenedArtistIds = flattenArtistIds(artistIds)
-  const filteredArtists = artists.filter(a => flattenedArtistIds.includes(a.id))
-
-  const filterArtists = (categoryName, ids) => {
-    setArtistIds({
-      ...artistIds,
-      [categoryName]: updateArtistIds(artistIds[categoryName], ids)
-    })
-  }
+  const [ artistIds, setArtistIds ] = useState([])
+  const filteredArtists = artists.filter(a => artistIds.includes(a.id))
 
   return (
     <Page>
-      <Filters filterArtists={filterArtists} />
+      <Filters filterArtists={setArtistIds} />
       <Artists artists={filteredArtists.length ? filteredArtists : artists} />
     </Page>
   )
