@@ -69,12 +69,12 @@ const Filters = ({ filterArtists }) => {
   const [ activeOption, setActiveOption ] = useState({})
   const [ isOptionsOpen, setIsOptionsOpen ] = useState(false)
   const alphabet = getAlphabet(extractNodes(data.allContentfulLetter))
-  const locations = extractNodes(data.allContentfulLocation)
-  const states = getStates(locations)
-  const regions = getRegions(locations)
+  const states = getStates(extractNodes(data.allContentfulLocation))
+  const regions = getRegions(extractNodes(data.allContentfulLocation))
   const media = getMedia(extractNodes(data.allContentfulMedium))
-  const allOptions = getOptions(activeCategory, regions, states, media, alphabet)
-  const options = allOptions.map(o => ({ ...o, isActive: o.name === activeOption.name }))
+  const activeCategoryOptions = getOptions(activeCategory, regions, states, media, alphabet)
+  const options = activeCategoryOptions
+    .map(o => ({ ...o, isActive: o.name === activeOption.name }))
 
   const handleOptionToggle = (categoryName, optionName, artistIds) => {
     let ids = []

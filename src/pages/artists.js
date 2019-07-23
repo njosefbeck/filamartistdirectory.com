@@ -26,9 +26,6 @@ export const query = graphql`
           id
           name
           slug
-          gallery {
-            id
-          }
           locations {
             region
             state
@@ -37,6 +34,12 @@ export const query = graphql`
           media {
             name
             id
+          }
+          imageThumbnail {
+            description
+            fluid(maxWidth: 270) {
+              ...GatsbyContentfulFluid_withWebp
+            }
           }
         }
       }
