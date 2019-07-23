@@ -20,11 +20,12 @@ const ArtistsPage = ({ data }) => {
 
 export const query = graphql`
   query ArtistsPageQuery {
-    allContentfulArtist {
+    allContentfulArtist(sort: {fields: lastName}) {
       edges {
         node {
           id
           name
+          lastName
           slug
           locations {
             region
