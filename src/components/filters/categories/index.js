@@ -13,7 +13,7 @@ const Category = ({ isActive, name, onCategoryClick }) => {
 }
 
 const Categories = ({ activeCategory, onCategoryClick }) => {
-  const names = ['Region', 'State', 'Media']
+  const names = ['ABC', 'Region', 'State', 'Media']
 
   return (
     <ul className='categories'>

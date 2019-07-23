@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import extractNodes from '../../helpers/extractNodes'
 import Categories from './categories';
 import Options from './options'
+import getAlphabet from '../../helpers/getAlphabet'
 import getRegions from '../../helpers/getRegions'
 import getStates from '../../helpers/getStates'
 import getMedia from '../../helpers/getMedia'
@@ -33,10 +34,21 @@ const filtersQuery = graphql`
         }
       }
     }
+    allContentfulLetter {
+      edges {
+        node {
+          text
+          artist {
+            id
+          }
+          id
+        }
+      }
+    }
   }
 `
 
-const getOptions = (category, regions, states, media) => {
+const getOptions = (category, regions, states, media, alphabet) => {
   switch (category) {
     case 'Region':
       return regions
@@ -44,6 +56,8 @@ const getOptions = (category, regions, states, media) => {
       return states
     case 'Media':
       return media
+    case 'ABC':
+      return alphabet
     default:
       return []
   }
@@ -54,11 +68,12 @@ const Filters = ({ filterArtists }) => {
   const [ activeCategory, setActiveCategory ] = useState(null)
   const [ activeOption, setActiveOption ] = useState({})
   const [ isOptionsOpen, setIsOptionsOpen ] = useState(false)
+  const alphabet = getAlphabet(extractNodes(data.allContentfulLetter))
   const locations = extractNodes(data.allContentfulLocation)
   const states = getStates(locations)
   const regions = getRegions(locations)
   const media = getMedia(extractNodes(data.allContentfulMedium))
-  const allOptions = getOptions(activeCategory, regions, states, media)
+  const allOptions = getOptions(activeCategory, regions, states, media, alphabet)
   const options = allOptions.map(o => ({ ...o, isActive: o.name === activeOption.name }))
 
   const handleOptionToggle = (categoryName, optionName, artistIds) => {
