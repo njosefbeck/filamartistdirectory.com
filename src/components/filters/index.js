@@ -77,8 +77,18 @@ const Filters = ({ filterArtists }) => {
   const options = allOptions.map(o => ({ ...o, isActive: o.name === activeOption.name }))
 
   const handleOptionToggle = (categoryName, optionName, artistIds) => {
-    setActiveOption({ category: categoryName, name: optionName })
-    filterArtists(artistIds)
+    let ids = []
+    let option = {}
+
+    // User has clicked on a different option, so
+    // need to update state accordingly
+    if (optionName !== activeOption.name) {
+      ids = artistIds
+      option = { category: categoryName, name: optionName }
+    }
+
+    setActiveOption(option)
+    filterArtists(ids)
   }
 
   const handleCategoryClick = categoryName => {
