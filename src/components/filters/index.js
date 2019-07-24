@@ -93,14 +93,16 @@ const Filters = ({ filterArtists }) => {
 
   const handleCategoryClick = categoryName => {
     let openOptions = false
+    let category = null
 
     if (activeCategory !== categoryName) {
       openOptions = true
+      category = categoryName
     } else {
       openOptions = !isOptionsOpen
     }
 
-    setActiveCategory(categoryName)
+    setActiveCategory(category)
     setIsOptionsOpen(openOptions)
   }
 
