@@ -2,7 +2,7 @@ import '../normalize.css'
 import '../global.css'
 import React, { Fragment } from 'react'
 import Logo from '../components/logo'
-import ArtistCount from './artist-count.js';
+import ArtistCount from './artist-count';
 
 const Page = ({ children }) => (
   <Fragment>
