@@ -18,9 +18,12 @@ const ArtistPage = ({ data }) => {
         <title>{artist.name} | Filipino American Artist Directory</title>
         <meta name="description" content={artist.metaDescription} />
         <meta property="og:url" content={`https://filamartistdirectory.com/artists/${artist.slug}`} />
+        <meta property="og:type" content={`article`} />
         <meta property="og:title" content={`${artist.name} | Filipino American Artist Directory`} />
         <meta property="og:description" content={artist.metaDescription} />
         <meta property="og:image" content={`https:${artist.facebookShareImage.file.url}`} />
+        <meta property="og:image:width" content={`1200`} />
+        <meta property="og:image:height" content={`630`} />
       </Helmet>
       {haveGallery && !haveVideos && <Gallery images={artist.gallery} />}
       {haveVideos && <Videos videos={artist.videos} />}
