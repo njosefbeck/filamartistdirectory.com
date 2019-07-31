@@ -1,17 +1,29 @@
 import './artist-page.css'
 import React from 'react'
 import { graphql } from 'gatsby'
-import Page from "../components/page";
+import { Helmet } from 'react-helmet'
+import Page from '../components/page';
 import Gallery from '../components/gallery';
+import Videos from '../components/videos';
 
 const ArtistPage = ({ data }) => {
   const artist = data.contentfulArtist
   const biographyHtml = artist.biography.childMarkdownRemark.html
   const haveGallery = artist.gallery && artist.gallery.length > 0
+  const haveVideos = artist.videos && artist.videos.length > 0
 
   return (
     <Page>
-      {haveGallery && <Gallery images={artist.gallery} />}
+      <Helmet>
+        <title>{artist.name} | Filipino American Artist Directory</title>
+        <meta name="description" content={artist.metaDescription} />
+        <meta property="og:url" content={`https://filamartistdirectory.com/artists/${artist.slug}`} />
+        <meta property="og:title" content={`${artist.name} | Filipino American Artist Directory`} />
+        <meta property="og:description" content={artist.metaDescription} />
+        <meta property="og:image" content={`https:${artist.facebookShareImage.file.url}`} />
+      </Helmet>
+      {haveGallery && !haveVideos && <Gallery images={artist.gallery} />}
+      {haveVideos && <Videos videos={artist.videos} />}
       <div className='biography' dangerouslySetInnerHTML={{ __html: biographyHtml }} />
     </Page>
   )
@@ -43,7 +55,7 @@ export const query = graphql`
       videos {
         embedType
         title
-        id
+        contentfulid
       }
     }
   }
