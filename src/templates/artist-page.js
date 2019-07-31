@@ -30,7 +30,7 @@ const ArtistPage = ({ data }) => {
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query ArtistQuery ($slug: String!) {
     contentfulArtist(slug: { eq: $slug }) {
       name
       biography {
