@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import * as JsSearch from 'js-search'
 import Page from '../components/page'
+import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 import extractNodes from '../helpers/extractNodes'
 import Artists from '../components/artists'
@@ -55,6 +56,11 @@ const ArtistsPage = ({ data }) => {
 
   return (
     <Page>
+      <Helmet>
+        <title>Artists | Filipino American Artist Directory</title>
+        <meta property="og:url" content={`https://filamartistdirectory.com/artists`} />
+        <meta property="og:title" content={`Artists | Filipino American Artist Directory`} />
+      </Helmet>
       <Search doSearch={doSearch} />
       <Filters filterArtists={setFilteredArtistIds} />
       <Artists artists={artists} />

@@ -2,9 +2,9 @@ import './artist-page.css'
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
-import Page from '../components/page';
-import Gallery from '../components/gallery';
-import Videos from '../components/videos';
+import Page from '../components/page'
+import Gallery from '../components/gallery'
+import Videos from '../components/videos'
 
 const ArtistPage = ({ data }) => {
   const artist = data.contentfulArtist
