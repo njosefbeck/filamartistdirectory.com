@@ -18,11 +18,13 @@ const Page = ({ children }) => {
       <header>
         <Logo />
         <ArtistCount />
+        <hr />
       </header>
       <main>
         {children}
       </main>
       <footer>
+        <hr />
         &copy; {new Date().getFullYear()} Filipino American Artist Directory. All images copyright to the respective artists.
       </footer>
     </Fragment>
