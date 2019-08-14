@@ -60,9 +60,9 @@ const AboutPage = ({ data }) => {
       </Helmet>
       {documentToReactComponents(page.content.json, options)}
       <form
-        name="about-contact-form"
+        name="About Contact Form"
         method="POST"
-        action="/about?submit=success"
+        action="/thanks/"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         onSubmit={handleSubmit}
