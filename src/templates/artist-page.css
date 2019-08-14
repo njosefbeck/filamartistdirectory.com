@@ -1,3 +1,7 @@
 .artist-website {
   margin-top: 15px;
 }
+
+.biography a {
+  text-decoration: underline;
+}

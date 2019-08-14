@@ -7,7 +7,7 @@ import Gallery from '../components/gallery'
 import Videos from '../components/videos'
 
 const outputWebsite = url => (
-  <div className='artist-website'>
+  <div key={url} className='artist-website'>
     <a className='with-underline' href={url} target='_blank' rel="noopener noreferrer">{url}</a>
   </div>
 )
@@ -58,6 +58,7 @@ export const query = graphql`
       }
       metaDescription
       gallery {
+        id
         description
         fluid(maxWidth: 700) {
           ...GatsbyContentfulFluid_withWebp

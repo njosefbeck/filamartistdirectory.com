@@ -6,7 +6,7 @@ const Gallery = ({ images }) => {
   return (
     <div className='gallery'>
       {images.map(image => (
-        <div className='image-wrapper'>
+        <div key={image.id} className='image-wrapper'>
           <Image className='image' alt={image.description} fluid={image.fluid} />
         </div>
       ))}

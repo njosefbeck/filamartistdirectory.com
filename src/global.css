@@ -38,6 +38,10 @@ a.with-underline {
   font-weight: 700;
 }
 
+a.with-underline.regular-weight {
+  font-weight: normal;
+}
+
 header,
 main,
 footer {
