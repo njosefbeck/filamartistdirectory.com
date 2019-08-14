@@ -17,7 +17,7 @@ const ArtistPage = ({ data }) => {
   const biographyHtml = artist.biography.childMarkdownRemark.html
   const haveGallery = artist.gallery && artist.gallery.length > 0
   const haveVideos = artist.videos && artist.videos.length > 0
-  const websites = artist.websites.length > 0 ? artist.websites.map(outputWebsite) : null
+  const websites = artist.websites ? artist.websites.map(outputWebsite) : null
 
   return (
     <Page>
@@ -35,7 +35,7 @@ const ArtistPage = ({ data }) => {
       {haveGallery && !haveVideos && <Gallery images={artist.gallery} />}
       {haveVideos && <Videos videos={artist.videos} />}
       <div className='biography' dangerouslySetInnerHTML={{ __html: biographyHtml }} />
-      {artist.websites.length > 0 && websites}
+      {artist.websites && artist.websites.length > 0 && websites}
     </Page>
   )
 }
