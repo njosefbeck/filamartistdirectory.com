@@ -72,8 +72,8 @@ const AboutPage = ({ data }) => {
           <input type="text" name="name" required onChange={handleChange} />
         </div>
         <div className="form-element">
-          <label for="last-name">Email Address *</label>
-          <input type="email" name="last-name" required onChange={handleChange} />
+          <label for="email">Email Address *</label>
+          <input type="email" name="email" required onChange={handleChange} />
         </div>
         <div className="form-element">
           <label for="subject">Subject *</label>
