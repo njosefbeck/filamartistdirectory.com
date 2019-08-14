@@ -72,3 +72,53 @@ hr {
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+form {
+  max-width: 600px;
+}
+
+form .form-element {
+  margin-bottom: 24px;
+}
+
+form .form-element label {
+  display: block;
+}
+
+form .form-element input,
+form .form-element textarea {
+  padding: 12px;
+  margin: 6px 0 4px;
+  border: 1px solid #CCC;
+  background: #FAFAFA;
+  color: #000;
+  font-size: 12px;
+  line-height: normal;
+  border-radius: 2px;
+  width: 100%;
+}
+
+form .form-element textarea {
+  min-height: 100px;
+}
+
+form .form-element button[type='submit'] {
+  border-radius: 0;
+  background-color: transparent;
+  color: #091b57;
+  border-color: #091b57;
+  border-width: 2px;
+  border-style: solid;
+  padding: 1em 2.5em;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.1s background-color linear, 0.1s color linear;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+form .form-element button[type='submit']:hover {
+  background-color: #091b57;
+  color: #FFF;
+}

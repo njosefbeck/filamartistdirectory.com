@@ -32,6 +32,27 @@ const AboutPage = ({ data }) => {
         <meta property="og:title" content={`About | Filipino American Artist Directory`} />
       </Helmet>
       {documentToReactComponents(page.content.json, options)}
+      <form name="about-contact-form" method="POST" netlify>
+        <div className="form-element">
+          <label for="first-name">Name *</label>
+          <input type="text" name="name" required />
+        </div>
+        <div className="form-element">
+          <label for="last-name">Email Address *</label>
+          <input type="email" name="last-name" required />
+        </div>
+        <div className="form-element">
+          <label for="subject">Subject *</label>
+          <input type="text" name="subject" required />
+        </div>
+        <div className="form-element">
+          <label for="message">Message *</label>
+          <textarea name="message" required></textarea>
+        </div>
+        <div className="form-element">
+          <button type="submit">Send</button>
+        </div>
+      </form>
     </Page>
   )
 }
