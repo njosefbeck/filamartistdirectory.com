@@ -33,6 +33,11 @@ a:hover {
   color: var(--lime, #a5fc03);
 }
 
+a.with-underline {
+  text-decoration: underline;
+  font-weight: 700;
+}
+
 header,
 main,
 footer {

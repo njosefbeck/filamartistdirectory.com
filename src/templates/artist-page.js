@@ -6,11 +6,18 @@ import Page from '../components/page'
 import Gallery from '../components/gallery'
 import Videos from '../components/videos'
 
+const outputWebsite = url => (
+  <div className='artist-website'>
+    <a className='with-underline' href={url} target='_blank' rel="noopener noreferrer">{url}</a>
+  </div>
+)
+
 const ArtistPage = ({ data }) => {
   const artist = data.contentfulArtist
   const biographyHtml = artist.biography.childMarkdownRemark.html
   const haveGallery = artist.gallery && artist.gallery.length > 0
   const haveVideos = artist.videos && artist.videos.length > 0
+  const websites = artist.websites.map(outputWebsite)
 
   return (
     <Page>
@@ -28,6 +35,7 @@ const ArtistPage = ({ data }) => {
       {haveGallery && !haveVideos && <Gallery images={artist.gallery} />}
       {haveVideos && <Videos videos={artist.videos} />}
       <div className='biography' dangerouslySetInnerHTML={{ __html: biographyHtml }} />
+      {artist.websites.length > 0 && websites}
     </Page>
   )
 }
@@ -60,6 +68,7 @@ export const query = graphql`
         title
         contentfulid
       }
+      websites
     }
   }
 `
