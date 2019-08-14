@@ -1,12 +1,20 @@
 import './about.css'
-import React from 'react'
+import React, { useState } from 'react'
+import { navigate } from 'gatsby-link'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import Page from '../../components/page'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
+function encode(data) {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
+
 const AboutPage = ({ data }) => {
+  const [ formBody, setFormBody ] = useState({})
   const page = data.contentfulAbout
   const options = {
     renderNode: {
@@ -23,6 +31,25 @@ const AboutPage = ({ data }) => {
     }
   }
 
+  const handleChange = (e) => {
+    setFormBody({ ...formBody, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    const form = e.target
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': form.getAttribute('name'),
+        ...formBody,
+      }),
+    })
+      .then(() => navigate(form.getAttribute('action')))
+      .catch((error) => alert(error))
+  }
+
   return (
     <Page>
       <Helmet>
@@ -32,22 +59,29 @@ const AboutPage = ({ data }) => {
         <meta property="og:title" content={`About | Filipino American Artist Directory`} />
       </Helmet>
       {documentToReactComponents(page.content.json, options)}
-      <form name="about-contact-form" method="POST" netlify>
+      <form
+        name="about-contact-form"
+        method="POST"
+        action="/about?submit=success"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        onSubmit={handleSubmit}
+      >
         <div className="form-element">
           <label for="first-name">Name *</label>
-          <input type="text" name="name" required />
+          <input type="text" name="name" required onChange={handleChange} />
         </div>
         <div className="form-element">
           <label for="last-name">Email Address *</label>
-          <input type="email" name="last-name" required />
+          <input type="email" name="last-name" required onChange={handleChange} />
         </div>
         <div className="form-element">
           <label for="subject">Subject *</label>
-          <input type="text" name="subject" required />
+          <input type="text" name="subject" required onChange={handleChange} />
         </div>
         <div className="form-element">
           <label for="message">Message *</label>
-          <textarea name="message" required></textarea>
+          <textarea name="message" required onChange={handleChange}></textarea>
         </div>
         <div className="form-element">
           <button type="submit">Send</button>
