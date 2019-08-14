@@ -17,7 +17,7 @@ const ArtistPage = ({ data }) => {
   const biographyHtml = artist.biography.childMarkdownRemark.html
   const haveGallery = artist.gallery && artist.gallery.length > 0
   const haveVideos = artist.videos && artist.videos.length > 0
-  const websites = artist.websites.map(outputWebsite)
+  const websites = artist.websites.length > 0 ? artist.websites.map(outputWebsite) : null
 
   return (
     <Page>
