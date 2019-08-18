@@ -16,7 +16,7 @@ exports.createPages = ({ graphql, actions}) => {
   .then(result => {
     result.data.allContentfulArtist.edges.forEach(({ node }) => {
       createPage({
-        path: `artists/${node.slug}`,
+        path: `${node.slug}`,
         component: path.resolve('./src/templates/artist-page.js'),
         context: {
           slug: node.slug

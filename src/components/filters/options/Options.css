@@ -5,8 +5,7 @@
   text-transform: uppercase;
   margin-top: 0;
   margin-bottom: 0;
-  padding: 10px 10px 0;
-  border: 2px solid var(--gray, #3d3d3d);
+  padding: 10px 0;
 }
 
 .options .option {

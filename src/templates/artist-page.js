@@ -24,7 +24,7 @@ const ArtistPage = ({ data }) => {
       <Helmet>
         <title>{artist.name} | Filipino American Artist Directory</title>
         <meta name="description" content={artist.metaDescription} />
-        <meta property="og:url" content={`https://filamartistdirectory.com/artists/${artist.slug}`} />
+        <meta property="og:url" content={`https://filamartistdirectory.com/${artist.slug}`} />
         <meta property="og:type" content={`article`} />
         <meta property="og:title" content={`${artist.name} | Filipino American Artist Directory`} />
         <meta property="og:description" content={artist.metaDescription} />

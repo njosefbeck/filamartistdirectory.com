@@ -5,6 +5,11 @@
   margin-right: 10px;
 }
 
+.team {
+  list-style-type: none;
+  padding-left: 0;
+}
+
 @media (min-width: 700px) {
   .map-image {
     float: right;

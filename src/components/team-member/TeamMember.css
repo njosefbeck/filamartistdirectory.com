@@ -1,0 +1,32 @@
+.team-member {
+  margin-bottom: 10px;
+}
+
+.team-member:last-child {
+  margin-bottom: 0;
+}
+
+.team-member .name {
+  margin-top: 0;
+}
+
+.team-member .photo {
+  margin-bottom: 30px;
+}
+
+@media (min-width: 700px) {
+  .team-member {
+    display: flex;
+  }
+
+  .team-member .photo-wrapper {
+    width: 100%;
+    max-width: 297px;
+    margin-right: 30px;
+  }
+
+  .team-member .text-wrapper {
+    width: calc(100% - 297px);
+  }
+
+}

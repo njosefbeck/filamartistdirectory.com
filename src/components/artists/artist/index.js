@@ -13,7 +13,7 @@ const renderImage = (name, imageThumbnail) => {
 
 const Artist = ({ name, slug, imageThumbnail, gallery }) => (
   <li className='artist'>
-    <Link to={`/artists/${slug}`}>
+    <Link to={`/${slug}`}>
       {renderImage(name, imageThumbnail)}
     </Link>
     <div className='name'>

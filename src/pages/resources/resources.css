@@ -1,0 +1,18 @@
+.resources {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.resource {
+  margin-bottom: 20px;
+}
+
+.resource:last-child {
+  margin-bottom: 0;
+}
+
+.resource a {
+  font-weight: 700;
+  text-decoration: underline;
+  margin-right: 10px;
+}
