@@ -1,6 +1,6 @@
 import './resources.css'
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import Page from '../../components/page'
 
@@ -27,6 +27,7 @@ const ResourcesPage = ({ data }) => {
           ))}
         </ul>
       )}
+      <p>Have a resource to suggest? <Link to='/contact'>Get in touch.</Link></p>
     </Page>
   )
 }
