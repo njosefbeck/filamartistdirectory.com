@@ -1,22 +1,22 @@
-import React, { useState } from 'react'
-import * as JsSearch from 'js-search'
-import Page from '../components/page'
-import { Helmet } from 'react-helmet'
-import { graphql } from 'gatsby'
-import extractNodes from '../helpers/extractNodes'
-import Artists from '../components/artists'
-import Filters from '../components/filters'
-import Search from '../components/search'
+import React, { useState } from "react"
+import * as JsSearch from "js-search"
+import Page from "../components/page"
+import { Helmet } from "react-helmet"
+import { graphql } from "gatsby"
+import extractNodes from "../helpers/extractNodes"
+import Artists from "../components/artists"
+import Filters from "../components/filters"
+import Search from "../components/search"
 
 const buildSearchIndex = artists => {
   if (!artists || !artists.length) {
     return
   }
 
-  const search = new JsSearch.Search('name')
+  const search = new JsSearch.Search("name")
 
-  search.addIndex('firstName')
-  search.addIndex('lastName')
+  search.addIndex("firstName")
+  search.addIndex("lastName")
   search.addDocuments(artists)
 
   return search
@@ -43,23 +43,25 @@ const filterArtists = (artists, filteredIds, foundIds) => {
 const IndexPage = ({ data }) => {
   const contentfulArtists = extractNodes(data.allContentfulArtist)
   const searchIndex = buildSearchIndex(contentfulArtists)
-  const [ filteredIds, setFilteredArtistIds ] = useState([])
-  const [ foundIds, setFoundIds ] = useState([])
+  const [filteredIds, setFilteredArtistIds] = useState([])
+  const [foundIds, setFoundIds] = useState([])
   const artists = filterArtists(contentfulArtists, filteredIds, foundIds)
-  
+
   const doSearch = evt => {
-    let foundArtists = searchIndex.search(evt.target.value);
+    let foundArtists = searchIndex.search(evt.target.value)
 
     setFoundIds(foundArtists.map(a => a.id))
   }
-
 
   return (
     <Page>
       <Helmet>
         <title>Filipino American Artist Directory</title>
         <meta property="og:url" content={`https://filamartistdirectory.com`} />
-        <meta property="og:title" content={`Filipino American Artist Directory`} />
+        <meta
+          property="og:title"
+          content={`Filipino American Artist Directory`}
+        />
       </Helmet>
       <Search doSearch={doSearch} />
       <Filters filterArtists={setFilteredArtistIds} />
@@ -70,7 +72,7 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
   query IndexPageQuery {
-    allContentfulArtist(sort: {fields: lastName}) {
+    allContentfulArtist(sort: { fields: lastName }) {
       edges {
         node {
           id

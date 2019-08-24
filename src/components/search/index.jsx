@@ -1,13 +1,13 @@
-import './Search.css'
-import React from 'react'
+import "./Search.css"
+import React from "react"
 
 const Search = ({ doSearch }) => {
   return (
     <input
-      className='search'
+      className="search"
       onChange={doSearch}
-      type='text'
-      placeholder='Search for artist by name...'
+      type="text"
+      placeholder="Search for artist by name..."
     />
   )
 }

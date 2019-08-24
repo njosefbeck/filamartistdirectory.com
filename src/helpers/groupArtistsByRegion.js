@@ -8,7 +8,7 @@ const groupArtistsByRegion = (regions, region) => {
 
   // We have a new region
   if (lastRegion.name !== region.name) {
-    return [ ...regions, region]
+    return [...regions, region]
   }
 
   if (!region.artistIds) {
@@ -17,9 +17,9 @@ const groupArtistsByRegion = (regions, region) => {
 
   let artistIds = []
   if (!lastRegion.artistIds) {
-    artistIds = [ ...region.artistIds ] 
+    artistIds = [...region.artistIds]
   } else {
-    artistIds = [ ...lastRegion.artistIds, ...region.artistIds ]
+    artistIds = [...lastRegion.artistIds, ...region.artistIds]
   }
 
   // Add region artists to last region
