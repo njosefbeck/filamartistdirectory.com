@@ -3,7 +3,8 @@ import '../global.css'
 import React, { Fragment } from 'react'
 import { Helmet } from 'react-helmet'
 import Logo from '../components/logo'
-import ArtistCount from './artist-count';
+import ArtistCount from './artist-count'
+import Footer from './footer'
 
 const Page = ({ children }) => {
   return (
@@ -23,10 +24,7 @@ const Page = ({ children }) => {
       <main>
         {children}
       </main>
-      <footer>
-        <hr />
-        &copy; {new Date().getFullYear()} Filipino American Artist Directory. All images copyright to the respective artists.
-      </footer>
+      <Footer />
     </Fragment>
   )
 }

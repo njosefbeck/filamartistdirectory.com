@@ -43,8 +43,7 @@ a.with-underline.regular-weight {
 }
 
 header,
-main,
-footer {
+main {
   max-width: 1200px;
   padding-left: 15px;
   padding-right: 15px;
@@ -55,12 +54,6 @@ footer {
 header {
   margin-top: 84px;
   margin-bottom: 33px;
-}
-
-footer {
-  margin-top: 56px;
-  margin-bottom: 56px;
-  text-align: center;
 }
 
 hr {
