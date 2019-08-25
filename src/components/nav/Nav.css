@@ -8,6 +8,7 @@ nav {
   margin: 0;
   text-transform: uppercase;
   overflow: hidden;
+  height: auto;
   max-height: 0;
   transition: max-height 0.15s ease-out;
 }
@@ -35,10 +36,29 @@ nav {
   margin-top: 20px;
 }
 
-.menu-button.hidden {
-  display: none;
-}
-
 .menu-button:hover {
   cursor: pointer;
+}
+
+@media (min-width: 1000px) {
+  .nav-list {
+    max-height: inherit;
+    display: flex;
+  }
+
+  .nav-list-item {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .nav-list-item:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .menu-button {
+    display: none;
+  }
 }

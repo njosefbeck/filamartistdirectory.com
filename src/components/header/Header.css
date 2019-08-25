@@ -4,3 +4,19 @@ header {
   padding-left: 15px;
   padding-right: 15px;
 }
+
+@media (min-width: 1000px) {
+  header {
+    margin-top: 50px;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .header-content .left {
+    order: -1;
+  }
+}

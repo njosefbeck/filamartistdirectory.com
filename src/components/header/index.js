@@ -6,14 +6,15 @@ import Nav from '../nav'
 
 const Header = () => (
   <header>
-    <div className='right'>
-      <Nav />
+    <div className='header-content'>
+      <div className='right'>
+        <Nav />
+      </div>
+      <div className='left'>
+        <Logo />
+        <ArtistCount />
+      </div>
     </div>
-    <div className='left'>
-      <Logo />
-      <ArtistCount />
-    </div>
-    <hr />
   </header>
 )
 
