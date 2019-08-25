@@ -42,18 +42,12 @@ a.with-underline.regular-weight {
   font-weight: normal;
 }
 
-header,
 main {
   max-width: 1200px;
   padding-left: 15px;
   padding-right: 15px;
   margin-left: auto;
   margin-right: auto;
-}
-
-header {
-  margin-top: 84px;
-  margin-bottom: 33px;
 }
 
 hr {
