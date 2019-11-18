@@ -21,7 +21,7 @@ const SubmissionsPage = ({ data }) => {
     <Page>
       <Helmet>
         <title>Submissions | Filipino American Artist Directory</title>
-        <meta property="description" content={page.metaDescription} />
+        <meta name="description" content={page.metaDescription} />
         <meta property="og:url" content={`https://filamartistdirectory.com/submissions`} />
         <meta property="og:title" content={`Submissions | Filipino American Artist Directory`} />
       </Helmet>

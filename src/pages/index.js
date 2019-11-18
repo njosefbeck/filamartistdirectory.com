@@ -57,7 +57,7 @@ const IndexPage = ({ data }) => {
     <Page>
       <Helmet>
         <title>Filipino American Artist Directory</title>
-        <meta property="description" content={`A meta description`} />
+        <meta name="description" content={`A meta description`} />
         <meta property="og:url" content={`https://filamartistdirectory.com`} />
         <meta
           property="og:title"

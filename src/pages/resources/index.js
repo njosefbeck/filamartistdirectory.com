@@ -10,7 +10,7 @@ const ResourcesPage = ({ data }) => {
     <Page>
       <Helmet>
         <title>Resources | Filipino American Artist Directory</title>
-        <meta property="description" content={page.metaDescription} />
+        <meta name="description" content={page.metaDescription} />
         <meta property="og:url" content={`https://filamartistdirectory.com/resources`} />
         <meta property="og:title" content={`Resources | Filipino American Artist Directory`} />
       </Helmet>

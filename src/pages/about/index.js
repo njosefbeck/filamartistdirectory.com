@@ -29,7 +29,7 @@ const AboutPage = ({ data }) => {
     <Page>
       <Helmet>
         <title>About | Filipino American Artist Directory</title>
-        <meta property="description" content={page.metaDescription} />
+        <meta name="description" content={page.metaDescription} />
         <meta property="og:url" content={`https://filamartistdirectory.com/about`} />
         <meta property="og:title" content={`About | Filipino American Artist Directory`} />
       </Helmet>

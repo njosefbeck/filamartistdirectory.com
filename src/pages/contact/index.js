@@ -48,7 +48,7 @@ const ContactPage = ({ data }) => {
     <Page>
       <Helmet>
         <title>Contact | Filipino American Artist Directory</title>
-        <meta property="description" content={page.metaDescription} />
+        <meta name="description" content={page.metaDescription} />
         <meta property="og:url" content={`https://filamartistdirectory.com/contact`} />
         <meta property="og:title" content={`Contact | Filipino American Artist Directory`} />
       </Helmet>
