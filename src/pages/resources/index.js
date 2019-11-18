@@ -6,7 +6,6 @@ import Page from '../../components/page'
 
 const ResourcesPage = ({ data }) => {
   const page = data.contentfulResources
-  console.log(page.resourcesList)
   return (
     <Page>
       <Helmet>
